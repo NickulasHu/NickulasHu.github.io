@@ -71,6 +71,86 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-手把手教你搭建个人博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/12/24/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
+  <time class="dt-published" datetime="2020-12-24T14:25:56.277Z" itemprop="datePublished">2020-12-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/12/24/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">手把手教你搭建个人博客网站--基于hexo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="手把手教你搭建个人博客网站–基于hexo"><a href="#手把手教你搭建个人博客网站–基于hexo" class="headerlink" title="手把手教你搭建个人博客网站–基于hexo"></a>手把手教你搭建个人博客网站–基于hexo</h1><p>搭建个人博客有很多好处，主要有以下几点:<br>个人博客更自由，版面的设计、样式都可以自己决定；<br>对自己学习过程的总结反思；<br>拥有自己的独立网站，流量更真实，可控；<br>打造个人品牌，向外界展示自己；<br>聚集人脉，结识志同道合的朋友；</p>
+<p>个人博客有这么多好处，还等什么，咱们开始搭建自己的博客吧。<br>搭建个人博客有很多实现路径，这里讲的是比较主流、快捷、低成本的方式，采用了hexo静态博客网站生成器。使用这个生成器前需要先安装nodejs和npm，这个就不详细讲解了，不知道的同学可以百度一下。下面正式开始: </p>
+<p>1 、因为npm安装程序速度很慢，我们使用中国npm镜像客户端cnpm,所以先安装cnpm。win+r 打开命令行窗口，输入下面的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>点击 enter 执行，安装成功会显示下图内容<br><img src="D:\mycourses\peronalBlogConstruct\image-20201224142850002.png" alt="image-20201224142850002" style="zoom:100%;" /></p>
+<p>2、安装hexo框架</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>就是这么简单，安装完成<br><img src="D:\mycourses\peronalBlogConstruct\image-20201224143355473.png" alt="image-20201224143355473"  /><br>输入”hexo -v” 检验是否安装成功<br><img src="D:\mycourses\peronalBlogConstruct\image-20201224145710470.png" alt="image-20201224145710470"></p>
+<p>版本号为4.2.0,说明hexo框架安装成功。</p>
+<p>3、在本地创建一个文件夹用于存放博客，例如”D:\工作资料\计算机学习\mycourses\markDown\peronalBlogConstruct\blog”</p>
+<p>4、在命令行窗口进入到刚创建的空文件夹中，用管理员身份执行下面的语句，初始化一个博客</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<p>等待一段时间，如果在此过程出了什么差错，直接把第3步创建的文件夹删掉，重复操作3、4步骤即可。<br><img src="D:\mycourses\peronalBlogConstruct\image-20201224164516472.png" alt="image-20201224164516472"><br>初始化完成。</p>
+<p>5、本地预览你的博客，初始化完成后，hexo会给你创建一个样例博客，在你创建的文件夹目录下”你的文件夹\source\_posts”<br>你可以在这个_posts文件夹下创建你的博客文档。然后在命令行窗口执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>即可在 “<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a> “的地址预览你的博客，如下图<br><img src="D:\mycourses\peronalBlogConstruct\image-20201224165552010.png" alt="image-20201224165552010"></p>
+<p>6、当添加了新的文档时，需要执行 “hexo clean” 清除缓存文件 db.json 和已生成的静态文件 public ，然后执行”hexo g”生成网站静态文件,上面两个命令都需要在根目录执行，而不是在_post 目录执行。</p>
+<p>7、将博客部署到github上:<br>    首先在你的github账户下添加一个项目，项目名称必须为 “你的github账户名称.github.io”,例如我创建的项目名称是 “NickulasHu.github.io”。<br>     第二步在你本地步骤3创建的文件夹下安装一个git部署插件，命令如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+<p>安装完成<br><img src="D:\mycourses\peronalBlogConstruct\image-20201224180317867.png" alt="image-20201224180317867"></p>
+<p>​                   然后修改步骤3创建的文件夹下的_config.yml文件，找到”deploy”配置，修改如下。<br>​    <font color=red >注意：配置文件中属性后面冒号后必须要有一个空格，否则会报错</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">	type: git</span><br><span class="line"> 	repo: https:&#x2F;&#x2F;github.com&#x2F;nickulashupro&#x2F;nickulashupro.github.io.git  #你的项目地址</span><br><span class="line"> 	branch: master</span><br></pre></td></tr></table></figure>
+<p>​                    最后执行部署命令 ，到此的你博客已经部署完成了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>8、更改样式，或许默认的样式你不喜欢，那么你可以从git上找一个你喜欢的样式并添加到你的博客上。<br>克隆一个样式到本地 “themes/你的样式”文件夹下，命令如下，其中后面的地址是你找到的样式项目的地址。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;liangjingkanji&#x2F;DrakeTyporaTheme.git themes&#x2F;DarkeTyporaTheme</span><br></pre></td></tr></table></figure>
+<p><img src="D:\mycourses\peronalBlogConstruct\image-20201224190901202.png" alt="image-20201224190901202"></p>
+<p>然后修改_config.yml文件中的 “theme”项</p>
+<p><img src="D:\mycourses\peronalBlogConstruct\image-20201224191133050.png" alt="image-20201224191133050"></p>
+<p>依次执行 “hexo clean”、”hexo g”、”hexo d” 完成部署。<br>到此为止，你的个人博客就部署完成了,，访问地址就是你git上新建的项目名称，但是遗憾的是部分同学的博客还是打不开。其实这是因为dns域名解析导致的问题，将你的网络DNS配置改成下面这样就可了。</p>
+<p><img src="D:\mycourses\peronalBlogConstruct\1677030-20201214013150383-1870981649.png" alt="img"></p>
+<p>附带hexo使用介绍: </p>
+<p>hexo常用命令</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;postName&quot; #新建文章</span><br><span class="line">hexo new page &quot;pageName&quot; #新建页面</span><br><span class="line">hexo generate #生成静态页面至public目录</span><br><span class="line">hexo server #开启预览访问端口（默认端口4000，&#x27;ctrl + c&#x27;关闭server）</span><br><span class="line">hexo deploy #将.deploy目录部署到GitHub</span><br><span class="line">hexo help  # 查看帮助</span><br><span class="line">hexo version  #查看Hexo的版本</span><br><span class="line">hexo deploy -g  #生成加部署</span><br><span class="line">hexo server -g  #生成加预览</span><br><span class="line">命令的简写</span><br><span class="line">hexo n == hexo <span class="keyword">new</span></span><br><span class="line">hexo g == hexo generate</span><br><span class="line">hexo s == hexo server</span><br><span class="line">hexo d == hexo deploy</span><br></pre></td></tr></table></figure>
+<p>更新博客</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo c</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>设置题目、分类、标签</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 你的题目</span><br><span class="line">tags: 你的标签</span><br><span class="line">category: 你的分类</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>多个标签、分类的设置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tags:</span><br><span class="line">  - 前端</span><br><span class="line">  - Hexo</span><br><span class="line">  - HTML</span><br><span class="line">  - JavaScript</span><br><span class="line">   </span><br><span class="line"> #或者</span><br><span class="line"> tags: [前端,Hexo,HTML,JavaScript]</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/12/24/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-id="ckj2yuuge0000ssuf3csh0f0q" data-title="手把手教你搭建个人博客网站--基于hexo" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-MD基本及画流程图语法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2020/12/24/MD%E5%9F%BA%E6%9C%AC%E5%8F%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE%E8%AF%AD%E6%B3%95/" class="article-date">
@@ -238,7 +318,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/12/24/MD%E5%9F%BA%E6%9C%AC%E5%8F%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE%E8%AF%AD%E6%B3%95/" data-id="ckj2xpff80000fsuf9c2vegmx" data-title="MD基本及画流程图语法" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/12/24/MD%E5%9F%BA%E6%9C%AC%E5%8F%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE%E8%AF%AD%E6%B3%95/" data-id="ckj2ya0w80001n8uf8z28fx5r" data-title="MD基本及画流程图语法" class="article-share-link">Share</a>
       
       
       
@@ -285,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/12/24/hello-world/" data-id="ckj2xpffk0001fsufbloi923t" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/12/24/hello-world/" data-id="ckj2ya0vo0000n8ufhdxq9c7e" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -326,6 +406,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/12/24/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">手把手教你搭建个人博客网站--基于hexo</a>
+          </li>
         
           <li>
             <a href="/2020/12/24/MD%E5%9F%BA%E6%9C%AC%E5%8F%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE%E8%AF%AD%E6%B3%95/">MD基本及画流程图语法</a>
