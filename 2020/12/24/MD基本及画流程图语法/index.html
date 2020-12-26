@@ -1,54 +1,142 @@
-extends base
-
-block title
-  title= page.title + ' | ' + config.title
-
-block content
-  .post
-    h1.post-title= page.title
-    .post-meta= page.date.format(config.date_format)
-      if page.categories.length > 0
-        span= ' | '
-        span.category
-          for category in page.categories.toArray()
-            a(href=url_for(category.path))= category.name
-      if theme.busuanzi == true
-        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
-        span#busuanzi_container_page_pv= ' | '
-          span#busuanzi_value_page_pv
-          span= ' ' + __('Hits')
-      if theme.wordcount == true
-        include _partial/wordcount.pug
-    if theme.disqus
-      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
-    if theme.changyan
-      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
-        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
-        span= ' ' + __('Comment')
-      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
-    if theme.valine.enable
-      a.disqus-comment-count( href=url_for(page.path) + '#vcomment')
-        span.valine-comment-count(data-xid=url_for(page.path))
-        span= ' ' + __('Comment')
-    if page.toc
-      div(class='clear')
-        div(id='toc' class='toc-article')
-          div(class='toc-title')= __('contents')
-          != toc(page.content, {list_number: theme.toc_number})
-    .post-content
-      != page.content
-    if theme.donate.enable == true && page.donate != false
-      include _widget/donate.pug
-
-    if theme.post_copyright.enable == true && page.copyright != false
-      include _widget/copyright.pug
-
-    if theme.shareto == true
-      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
-      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
-
-    include _partial/tag.pug
-    include _partial/post_nav.pug
-
-    if page.comments
-      include _partial/comments.pug
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>MD基本及画流程图语法 | Hexo</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">MD基本及画流程图语法</h1><a id="logo" href="/.">Hexo</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">MD基本及画流程图语法</h1><div class="post-meta">2020-12-24</div><div class="post-content"><h1 id="大号字体"><a href="#大号字体" class="headerlink" title="大号字体"></a>大号字体</h1><h2 id="中号字体"><a href="#中号字体" class="headerlink" title="中号字体"></a>中号字体</h2><h4 id="小号字体"><a href="#小号字体" class="headerlink" title="小号字体"></a>小号字体</h4><p>单行代码<br><code>private string base;</code></p>
+<p>多行代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//产品父类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">House</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> string base;</span><br><span class="line">    <span class="keyword">private</span> string wall;</span><br><span class="line">    <span class="keyword">private</span> string roofed;</span><br></pre></td></tr></table></figure>
+<p><a href="www.baidu.com">超链接</a></p>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><ul>
+<li>无序列表<ol>
+<li>有序列表</li>
+<li>有序列表</li>
+</ol>
+</li>
+</ul>
+<h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><hr>
+<h3 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h3><p><strong>文字加粗</strong><br><em>斜体</em><br><u>下划线</u></p>
+<h3 id="转义符"><a href="#转义符" class="headerlink" title="转义符"></a>转义符</h3><p>*     #</p>
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><table>
+<thead>
+<tr>
+<th>你是谁</th>
+<th>你从哪来</th>
+<th>到哪里去</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="图表方向"><a href="#图表方向" class="headerlink" title="图表方向"></a>图表方向</h3><p>Mermaid 支持多种图表的方向，语法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">graph 方向描述</span><br><span class="line">    图表中的其他语句...12</span><br></pre></td></tr></table></figure>
+<p>其中“方向描述”为</p>
+<table>
+<thead>
+<tr>
+<th>用词</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TB</td>
+<td>从上到下</td>
+</tr>
+<tr>
+<td>BT</td>
+<td>从下到上</td>
+</tr>
+<tr>
+<td>RL</td>
+<td>从右到左</td>
+</tr>
+<tr>
+<td>LR</td>
+<td>从左到右</td>
+</tr>
+</tbody></table>
+<h3 id="节点定义"><a href="#节点定义" class="headerlink" title="节点定义"></a>节点定义</h3><p>即流程图中每个文本块，包括开始、结束、处理、判断等。Mermaid 中每个节点都有一个 id，以及节点的文字。</p>
+<table>
+<thead>
+<tr>
+<th>表述</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id[文字]</code></td>
+<td>矩形节点</td>
+</tr>
+<tr>
+<td><code>id(文字)</code></td>
+<td>圆角矩形节点</td>
+</tr>
+<tr>
+<td><code>id((文字))</code></td>
+<td>圆形节点</td>
+</tr>
+<tr>
+<td><code>id&gt;文字]</code></td>
+<td>右向旗帜状节点</td>
+</tr>
+<tr>
+<td><code>id&#123;文字&#125;</code></td>
+<td>菱形节点</td>
+</tr>
+</tbody></table>
+<p>需要注意的是，如果节点的文字中包含标点符号，需要时用双引号包裹起来。<br>另外如果希望在文字中使用换行，请使用<br>替换换行</p>
+<h3 id="节点间的连线"><a href="#节点间的连线" class="headerlink" title="节点间的连线"></a>节点间的连线</h3><table>
+<thead>
+<tr>
+<th>表述</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&gt;</code></td>
+<td>添加尾部箭头</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>不添加尾部箭头</td>
+</tr>
+<tr>
+<td><code>--</code></td>
+<td>单线</td>
+</tr>
+<tr>
+<td><code>--text--</code></td>
+<td>单线上加文字</td>
+</tr>
+<tr>
+<td><code>==</code></td>
+<td>粗线</td>
+</tr>
+<tr>
+<td><code>==text==</code></td>
+<td>粗线加文字</td>
+</tr>
+<tr>
+<td><code>-.-</code></td>
+<td>虚线</td>
+</tr>
+<tr>
+<td><code>-.text.-</code></td>
+<td>虚线加文字</td>
+</tr>
+</tbody></table>
+<h3 id="下方为应用实例"><a href="#下方为应用实例" class="headerlink" title="下方为应用实例"></a>下方为应用实例</h3><h2 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line"></span><br><span class="line">subgraph 网络相机</span><br><span class="line">	大华IPC</span><br><span class="line">	海康IPC</span><br><span class="line">	派尔高IPC</span><br><span class="line">	针孔1--&gt;Axis解码器</span><br><span class="line">	针孔2--&gt;Axis解码器</span><br><span class="line">	针孔3--&gt;Axis解码器</span><br><span class="line">	针孔4--&gt;Axis解码器</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">subgraph 海康NVR</span><br><span class="line">	拉流--&gt;存储--&gt;推流</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">大华IPC--&gt;拉流</span><br><span class="line">海康IPC--&gt;拉流</span><br><span class="line">派尔高IPC--&gt;拉流</span><br><span class="line">Axis解码器-.-&gt;拉流</span><br><span class="line"></span><br><span class="line">subgraph SDK</span><br><span class="line">	海康SDK</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">subgraph 度益视频平台</span><br><span class="line">	视频客户端</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">推流--&gt;海康SDK--&gt;视频客户端</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="项目架构"><a href="#项目架构" class="headerlink" title="项目架构"></a>项目架构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Doit.NVR.Client((Doit.NVR.Client))--&gt;Doit.CV.IPC--&gt;Doit.CV.IPC.SDK</span><br><span class="line">Doit.CV.IPC.SDK--&gt;AXIS-SDK(AXIS-SDK)</span><br><span class="line">Doit.CV.IPC.SDK--&gt;DH-SDK(DH-SDK)</span><br><span class="line">Doit.CV.IPC.SDK--&gt;HK-SDK(HK-SDK)</span><br><span class="line">Doit.CV.IPC.SDK--&gt;ZD-SDK(ZD-SDK)</span><br><span class="line">Doit.CV.IPC.SDK--&gt;PELCO-SDK(PELCO-SDK)</span><br><span class="line"></span><br><span class="line">classDef red fill:red,color:white</span><br><span class="line">classDef orange fill:orange,color:white</span><br><span class="line"></span><br><span class="line">class Doit.NVR.Client red</span><br><span class="line">class AXIS-SDK,DH-SDK,HK-SDK,ZD-SDK,PELCO-SDK orange</span><br></pre></td></tr></table></figure>
+<h2 id="实体-关系定义"><a href="#实体-关系定义" class="headerlink" title="实体-关系定义"></a>实体-关系定义</h2><ul>
+<li>以相机实体作为核心实体</li>
+<li>场桥作为业务实体，与相机建立<strong>多对多</strong>的包含关系，在客户端中展现给用户</li>
+<li>NVR服务器作为技术实体，与相机建立<strong>一对多</strong>包含关系，为后台取流提供登录验证、通道关联、PTZ控制等</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">subgraph 业务实体</span><br><span class="line">	场桥1[场桥]</span><br><span class="line">	场桥2[场桥]</span><br><span class="line">	场桥3[场桥]</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">subgraph 相机</span><br><span class="line">	IPC1(IPC)</span><br><span class="line">	IPC2(IPC)</span><br><span class="line">	IPC3(IPC)</span><br><span class="line">	IPC4(IPC)</span><br><span class="line">	IPC5(IPC)</span><br><span class="line">	IPC6(IPC)</span><br><span class="line">	IPC7(IPC)</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">subgraph 技术实体</span><br><span class="line">	NVR1[NVR服务器]</span><br><span class="line">	NVR2[NVR服务器]</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">场桥1-.-&gt;IPC1</span><br><span class="line">场桥1-.-&gt;IPC2</span><br><span class="line"></span><br><span class="line">场桥2-.-&gt;IPC3</span><br><span class="line">场桥2-.-&gt;IPC4</span><br><span class="line"></span><br><span class="line">场桥3-.-&gt;IPC5</span><br><span class="line">场桥3-.-&gt;IPC6</span><br><span class="line">场桥3-.-&gt;IPC7</span><br><span class="line"></span><br><span class="line">场桥1-.-&gt;IPC4</span><br><span class="line">场桥3-.-&gt;IPC4</span><br><span class="line"></span><br><span class="line">IPC1---NVR1</span><br><span class="line">IPC2---NVR1</span><br><span class="line">IPC3---NVR1</span><br><span class="line"></span><br><span class="line">IPC4---NVR2</span><br><span class="line">IPC5---NVR2</span><br><span class="line">IPC6---NVR2</span><br><span class="line">IPC7---NVR2</span><br><span class="line"></span><br><span class="line">classDef blue fill:blue,color:white</span><br><span class="line">classDef red fill:red,color:white</span><br><span class="line">classDef orange fill:orange,color:white</span><br><span class="line"></span><br><span class="line">class 场桥1,场桥2,场桥3,场桥4 blue</span><br><span class="line">class NVR1,NVR2 red</span><br><span class="line">class IPC4 orange</span><br></pre></td></tr></table></figure>
+<p>标准流程图纵向</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">st&#x3D;&gt;start: 开始框</span><br><span class="line">op&#x3D;&gt;operation: 处理框</span><br><span class="line">cond&#x3D;&gt;condition: 判断框(是或否?)</span><br><span class="line">sub1&#x3D;&gt;subroutine: 子流程</span><br><span class="line">io&#x3D;&gt;inputoutput: 输入输出框</span><br><span class="line">e&#x3D;&gt;end: 结束框</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;io-&gt;e</span><br><span class="line">cond(no)-&gt;sub1(right)-&gt;op</span><br></pre></td></tr></table></figure>
+<p>标准流程图源码格式（横向）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">st&#x3D;&gt;start: 开始框</span><br><span class="line">op&#x3D;&gt;operation: 处理框</span><br><span class="line">cond&#x3D;&gt;condition: 判断框(是或否?)</span><br><span class="line">sub1&#x3D;&gt;subroutine: 子流程</span><br><span class="line">io&#x3D;&gt;inputoutput: 输入输出框</span><br><span class="line">e&#x3D;&gt;end: 结束框</span><br><span class="line">st(right)-&gt;op(right)-&gt;cond</span><br><span class="line">cond(yes)-&gt;io(bottom)-&gt;e</span><br><span class="line">cond(no)-&gt;sub1(bottom)-&gt;e</span><br></pre></td></tr></table></figure>
+<p>UML时序图源码样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">对象A-&gt;对象B: 对象B你好吗?（请求）</span><br><span class="line">Note right of 对象B: 对象B的描述</span><br><span class="line">Note left of 对象A: 对象A的描述(提示)</span><br><span class="line">对象B--&gt;对象A: 我很好(响应)</span><br><span class="line">对象A-&gt;对象B: 你真的好吗？</span><br></pre></td></tr></table></figure>
+<p>UML标准时序图样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">%% 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头</span><br><span class="line">  sequenceDiagram</span><br><span class="line">    participant 张三</span><br><span class="line">    participant 李四</span><br><span class="line">    张三-&gt;王五: 王五你好吗？</span><br><span class="line">    loop 健康检查</span><br><span class="line">        王五-&gt;王五: 与疾病战斗</span><br><span class="line">    end</span><br><span class="line">    Note right of 王五: 合理 食物 &lt;br&#x2F;&gt;看医生...</span><br><span class="line">    李四--&gt;&gt;张三: 很好!</span><br><span class="line">    王五-&gt;李四: 你怎么样?</span><br><span class="line">    李四--&gt;王五: 很好!</span><br></pre></td></tr></table></figure>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2020/12/24/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">手把手教你搭建个人博客网站--基于hexo</a><a class="next" href="/2020/12/24/hello-world/">Hello World</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://example.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/12/24/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">手把手教你搭建个人博客网站--基于hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/12/24/MD%E5%9F%BA%E6%9C%AC%E5%8F%8A%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE%E8%AF%AD%E6%B3%95/">MD基本及画流程图语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/12/24/hello-world/">Hello World</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">Hexo.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
