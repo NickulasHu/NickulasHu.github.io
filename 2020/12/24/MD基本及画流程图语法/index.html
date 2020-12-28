@@ -130,14 +130,108 @@
 <td>虚线加文字</td>
 </tr>
 </tbody></table>
-<h3 id="下方为应用实例"><a href="#下方为应用实例" class="headerlink" title="下方为应用实例"></a>下方为应用实例</h3><h2 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line"></span><br><span class="line">subgraph 网络相机</span><br><span class="line">	大华IPC</span><br><span class="line">	海康IPC</span><br><span class="line">	派尔高IPC</span><br><span class="line">	针孔1--&gt;Axis解码器</span><br><span class="line">	针孔2--&gt;Axis解码器</span><br><span class="line">	针孔3--&gt;Axis解码器</span><br><span class="line">	针孔4--&gt;Axis解码器</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">subgraph 海康NVR</span><br><span class="line">	拉流--&gt;存储--&gt;推流</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">大华IPC--&gt;拉流</span><br><span class="line">海康IPC--&gt;拉流</span><br><span class="line">派尔高IPC--&gt;拉流</span><br><span class="line">Axis解码器-.-&gt;拉流</span><br><span class="line"></span><br><span class="line">subgraph SDK</span><br><span class="line">	海康SDK</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">subgraph 度益视频平台</span><br><span class="line">	视频客户端</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">推流--&gt;海康SDK--&gt;视频客户端</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="项目架构"><a href="#项目架构" class="headerlink" title="项目架构"></a>项目架构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Doit.NVR.Client((Doit.NVR.Client))--&gt;Doit.CV.IPC--&gt;Doit.CV.IPC.SDK</span><br><span class="line">Doit.CV.IPC.SDK--&gt;AXIS-SDK(AXIS-SDK)</span><br><span class="line">Doit.CV.IPC.SDK--&gt;DH-SDK(DH-SDK)</span><br><span class="line">Doit.CV.IPC.SDK--&gt;HK-SDK(HK-SDK)</span><br><span class="line">Doit.CV.IPC.SDK--&gt;ZD-SDK(ZD-SDK)</span><br><span class="line">Doit.CV.IPC.SDK--&gt;PELCO-SDK(PELCO-SDK)</span><br><span class="line"></span><br><span class="line">classDef red fill:red,color:white</span><br><span class="line">classDef orange fill:orange,color:white</span><br><span class="line"></span><br><span class="line">class Doit.NVR.Client red</span><br><span class="line">class AXIS-SDK,DH-SDK,HK-SDK,ZD-SDK,PELCO-SDK orange</span><br></pre></td></tr></table></figure>
+<h3 id="下方为应用实例"><a href="#下方为应用实例" class="headerlink" title="下方为应用实例"></a>下方为应用实例</h3><h2 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h2><pre class="mermaid">graph LR
+
+subgraph 网络相机
+    大华IPC
+    海康IPC
+    派尔高IPC
+    针孔1-->Axis解码器
+    针孔2-->Axis解码器
+    针孔3-->Axis解码器
+    针孔4-->Axis解码器
+end
+
+subgraph 海康NVR
+    拉流-->存储-->推流
+end
+
+大华IPC-->拉流
+海康IPC-->拉流
+派尔高IPC-->拉流
+Axis解码器-.->拉流
+
+subgraph SDK
+    海康SDK
+end
+
+subgraph 度益视频平台
+    视频客户端
+end
+
+推流-->海康SDK-->视频客户端</pre>
+
+<h2 id="项目架构"><a href="#项目架构" class="headerlink" title="项目架构"></a>项目架构</h2><pre class="mermaid">graph LR
+Doit.NVR.Client((Doit.NVR.Client))-->Doit.CV.IPC-->Doit.CV.IPC.SDK
+Doit.CV.IPC.SDK-->AXIS-SDK(AXIS-SDK)
+Doit.CV.IPC.SDK-->DH-SDK(DH-SDK)
+Doit.CV.IPC.SDK-->HK-SDK(HK-SDK)
+Doit.CV.IPC.SDK-->ZD-SDK(ZD-SDK)
+Doit.CV.IPC.SDK-->PELCO-SDK(PELCO-SDK)
+
+classDef red fill:red,color:white
+classDef orange fill:orange,color:white
+
+class Doit.NVR.Client red
+class AXIS-SDK,DH-SDK,HK-SDK,ZD-SDK,PELCO-SDK orange</pre>
+
 <h2 id="实体-关系定义"><a href="#实体-关系定义" class="headerlink" title="实体-关系定义"></a>实体-关系定义</h2><ul>
 <li>以相机实体作为核心实体</li>
 <li>场桥作为业务实体，与相机建立<strong>多对多</strong>的包含关系，在客户端中展现给用户</li>
 <li>NVR服务器作为技术实体，与相机建立<strong>一对多</strong>包含关系，为后台取流提供登录验证、通道关联、PTZ控制等</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">subgraph 业务实体</span><br><span class="line">	场桥1[场桥]</span><br><span class="line">	场桥2[场桥]</span><br><span class="line">	场桥3[场桥]</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">subgraph 相机</span><br><span class="line">	IPC1(IPC)</span><br><span class="line">	IPC2(IPC)</span><br><span class="line">	IPC3(IPC)</span><br><span class="line">	IPC4(IPC)</span><br><span class="line">	IPC5(IPC)</span><br><span class="line">	IPC6(IPC)</span><br><span class="line">	IPC7(IPC)</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">subgraph 技术实体</span><br><span class="line">	NVR1[NVR服务器]</span><br><span class="line">	NVR2[NVR服务器]</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">场桥1-.-&gt;IPC1</span><br><span class="line">场桥1-.-&gt;IPC2</span><br><span class="line"></span><br><span class="line">场桥2-.-&gt;IPC3</span><br><span class="line">场桥2-.-&gt;IPC4</span><br><span class="line"></span><br><span class="line">场桥3-.-&gt;IPC5</span><br><span class="line">场桥3-.-&gt;IPC6</span><br><span class="line">场桥3-.-&gt;IPC7</span><br><span class="line"></span><br><span class="line">场桥1-.-&gt;IPC4</span><br><span class="line">场桥3-.-&gt;IPC4</span><br><span class="line"></span><br><span class="line">IPC1---NVR1</span><br><span class="line">IPC2---NVR1</span><br><span class="line">IPC3---NVR1</span><br><span class="line"></span><br><span class="line">IPC4---NVR2</span><br><span class="line">IPC5---NVR2</span><br><span class="line">IPC6---NVR2</span><br><span class="line">IPC7---NVR2</span><br><span class="line"></span><br><span class="line">classDef blue fill:blue,color:white</span><br><span class="line">classDef red fill:red,color:white</span><br><span class="line">classDef orange fill:orange,color:white</span><br><span class="line"></span><br><span class="line">class 场桥1,场桥2,场桥3,场桥4 blue</span><br><span class="line">class NVR1,NVR2 red</span><br><span class="line">class IPC4 orange</span><br></pre></td></tr></table></figure>
+<pre class="mermaid">graph LR
+subgraph 业务实体
+    场桥1[场桥]
+    场桥2[场桥]
+    场桥3[场桥]
+end
+
+subgraph 相机
+    IPC1(IPC)
+    IPC2(IPC)
+    IPC3(IPC)
+    IPC4(IPC)
+    IPC5(IPC)
+    IPC6(IPC)
+    IPC7(IPC)
+end
+
+subgraph 技术实体
+    NVR1[NVR服务器]
+    NVR2[NVR服务器]
+end
+
+场桥1-.->IPC1
+场桥1-.->IPC2
+
+场桥2-.->IPC3
+场桥2-.->IPC4
+
+场桥3-.->IPC5
+场桥3-.->IPC6
+场桥3-.->IPC7
+
+场桥1-.->IPC4
+场桥3-.->IPC4
+
+IPC1---NVR1
+IPC2---NVR1
+IPC3---NVR1
+
+IPC4---NVR2
+IPC5---NVR2
+IPC6---NVR2
+IPC7---NVR2
+
+classDef blue fill:blue,color:white
+classDef red fill:red,color:white
+classDef orange fill:orange,color:white
+
+class 场桥1,场桥2,场桥3,场桥4 blue
+class NVR1,NVR2 red
+class IPC4 orange</pre>
+
 <p>标准流程图纵向</p>
 <div id="flowchart-0" class="flow-chart"></div>
 
@@ -146,7 +240,19 @@
 UML时序图源码样例：
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">对象A-&gt;对象B: 对象B你好吗?（请求）</span><br><span class="line">Note right of 对象B: 对象B的描述</span><br><span class="line">Note left of 对象A: 对象A的描述(提示)</span><br><span class="line">对象B--&gt;对象A: 我很好(响应)</span><br><span class="line">对象A-&gt;对象B: 你真的好吗？</span><br></pre></td></tr></table></figure>
 UML标准时序图样例：
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">%% 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头</span><br><span class="line">  sequenceDiagram</span><br><span class="line">    participant 张三</span><br><span class="line">    participant 李四</span><br><span class="line">    张三-&gt;王五: 王五你好吗？</span><br><span class="line">    loop 健康检查</span><br><span class="line">        王五-&gt;王五: 与疾病战斗</span><br><span class="line">    end</span><br><span class="line">    Note right of 王五: 合理 食物 &lt;br&#x2F;&gt;看医生...</span><br><span class="line">    李四--&gt;&gt;张三: 很好!</span><br><span class="line">    王五-&gt;李四: 你怎么样?</span><br><span class="line">    李四--&gt;王五: 很好!</span><br></pre></td></tr></table></figure>
+<pre class="mermaid">%% 时序图例子,-> 直线，-->虚线，->>实线箭头
+  sequenceDiagram
+    participant 张三
+    participant 李四
+    张三->王五: 王五你好吗？
+    loop 健康检查
+        王五->王五: 与疾病战斗
+    end
+    Note right of 王五: 合理 食物 <br>看医生...
+    李四-->>张三: 很好!
+    王五->李四: 你怎么样?
+    李四-->王五: 很好!</pre>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">st=>start: 开始框
 op=>operation: 处理框
 cond=>condition: 判断框(是或否?)
